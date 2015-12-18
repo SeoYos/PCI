@@ -1,0 +1,54 @@
+@charset "UTF-8";
+
+.j { font-size: 9pt; font-weight: normal; color: #000000; }
+.jpadding { PADDING-BOTTOM:3px; }
+.jMid { font-size: 9pt; font-weight: normal; color: #000000; }
+.jBold { font-size: 9pt; font-weight: bold; color: #000000; }
+.jboldwhite { font-size: 9pt; font-weight: bold; color: #FFFFFF; }
+.jimg { font-size: 10pt; font-weight: normal; color: #000000; }
+.jimgbold { font-size: 10pt; font-weight: bold; color: #000000; }
+.jimgboldb { font-size: 10pt; font-weight: bold; color: #000000; PADDING-LEFT:3px; PADDING-RIGHT:3px; }
+.jimgblue { font-size: 10pt; font-weight: bold; color: #272783; }
+.jimgwhite { font-size: 10pt; font-weight: bold; color: #FFFFFF; }
+.jimgmedium { font-size: 11pt; font-weight: bold; color: #000000; }
+.jHeader { font-size: 12pt; font-weight: bold; color: #000000; }
+.jcalnorm { font-size: 12pt; font-weight: normal; color: #000000; }
+.jcalblue { font-size: 12pt; font-weight: bold; color: #272783; }
+.jcalred { font-size: 12pt; font-weight: bold; color: #F72245; text-decoration: underline; }
+.jHeaderBrown { font-size: 14px; font-weight: bold; color: #F72245; }
+.jHeaderBlue { font-size: 12px; font-weight: bold; color: #272783; }
+.jHeaderWhite { font-size: 14px; font-weight: bold; color: #FFFFFF; }
+.jHeaderWhitew { font-size: 14px; font-weight: bold; color: #FFFFFF; PADDING:3px; }
+.jHeaderDB { font-size: 14px; font-weight: bold; color: #20438A; }
+.imgleft { float: left; margin:10px; padding:3px; border:1px solid #3d4773; background-color:#FFFFFF;}
+.imgright { float: right; margin:10px; padding:3px; border:1px solid #3d4773; background-color:#FFFFFF;}
+p { clear: both; line-height: 1.4}
+.jBasic { font-size: 12px; font-weight: normal; color: #000000; }
+.jBasicBold { font-size: 12px; font-weight: bold; color: #000000; }
+.jBasicName { font-size: 12px; font-weight: normal; color: #000000; }
+.jmenuwhite { font-size: 10px; font-weight: bold; color: #FFFFFF ; vertical-align: text-top; }
+.jInnerTitle { font-size: 12px; font-weight: bold; color: #505270; }	
+.tabbox {
+	BORDER-RIGHT: #103648 1px solid; BORDER-TOP: #103648 1px solid; BORDER-LEFT: #103648 1px solid; BORDER-BOTTOM: #103648 1px solid
+}
+.tabgrad {
+	background-color: #B6D0F2; PADDING:6px;	
+}
+.slasher {
+	BACKGROUND-POSITION: center 50%; BACKGROUND-IMAGE: url(images/slasher.gif); BACKGROUND-REPEAT: repeat-x
+}
+.lighthead {
+	BACKGROUND-IMAGE: url(images/top_grad.gif); BACKGROUND-REPEAT: repeat-x; BORDER-RIGHT: #103648 1px solid; BORDER-TOP: #103648 1px solid; BORDER-LEFT: #103648 1px solid; BORDER-BOTTOM: #103648 1px solid; LINE-HEIGHT: 19px;
+}
+.padding {
+	PADDING:2px;
+}
+BODY           { background-color: #FFFEF7; margin: 0; padding: 0; text: #000000; }
+img { border:0; }
+form {display:inline;}
+.align_cent	{ text-align: center }
+.align_right	{ text-align: right }
+A:link          { color:#0014D8; text-decoration:none }
+A:visited      { color:#283099; text-decoration:none }
+A:active       { color:#0CB2FF; text-decoration:none }
+A:hover        { color:#0CB2FF; text-decoration:none }	
