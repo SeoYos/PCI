@@ -183,7 +183,7 @@ def geneticoptimize(domain,costf,popsize=50,step=1,
 
     # Main loop
     for i in range(maxiter):
-        scores=[(costf(v),v) for v in pop]
+        scores=[(costf(v),v) for v in pop if v != None]
         scores.sort()
         ranked=[v for (s,v) in scores]
 
