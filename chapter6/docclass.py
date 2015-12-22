@@ -108,6 +108,7 @@ class naivebayes(classifier):
             if cat==best: continue
             if probs[cat]*self.getthreshold(best)>probs[best]: return default
         return best
+
     def docprob(self,item,cat):
         features=self.getfeatures(item)
         # すべての特徴の確率を掛け合わせる
@@ -119,3 +120,15 @@ class naivebayes(classifier):
         catprob=self.catcount(cat)/self.totalcount()
         docprob=self.docprob(item,cat)
         return docprob*catprob
+
+class fisherclassifier(classifier):
+    def cprob(self, f, cat):
+        # このカテゴリの中でこの特徴の頻度
+        clf=self.fprob(f,cat)
+        if clf==0: return 0
+
+        # すべてのカテゴリの中でこの特徴の頻度
+        freqsum=sum([self.fprob(f,c) for c in self.categories()])
+        # 確率はこのカテゴリでの頻度を全体の頻度で割ったもの
+        p=clf/(freqsum)
+        return p
