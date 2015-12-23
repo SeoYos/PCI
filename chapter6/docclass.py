@@ -122,6 +122,30 @@ class naivebayes(classifier):
         return docprob*catprob
 
 class fisherclassifier(classifier):
+
+    def __init__(self,getfeatures):
+        classifier.__init__(self,getfeatures)
+        self.minimums={}
+
+    def setminimum(self,cat,min):
+        self.minimums[cat]=min
+
+    def getminimum(self,cat):
+        if cat not in self.minimums: return 0
+        return self.minimums[cat]
+
+    def classify(self,item,default=None):
+        # もっともよい結果を探してループする
+        best=default
+        max=0.0
+        for c in self.categories():
+            p=self.fisherprob(item,c)
+            # 下限値を超えていることを確認する
+            if p>self.getminimum(c) and p>max:
+                best=c
+                max=p
+        return best
+
     def cprob(self, f, cat):
         # このカテゴリの中でこの特徴の頻度
         clf=self.fprob(f,cat)
