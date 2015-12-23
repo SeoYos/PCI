@@ -132,3 +132,24 @@ class fisherclassifier(classifier):
         # 確率はこのカテゴリでの頻度を全体の頻度で割ったもの
         p=clf/(freqsum)
         return p
+
+    def fisherprob(self,item,cat):
+        # すべての確率を掛け合わせる
+        p=1
+        features=self.getfeatures(item)
+        for f in features:
+            p*=(self.weightedprob(f,cat,self.cprob))
+
+        # 自然対数を取り-2を掛け合わせる
+        fscore=-2*math.log(p)
+
+        return self.invchi2(fscore,len(features)*2)
+
+    def invchi2(self,chi,df):
+        m = chi / 2.0
+        sum = term = math.exp(-m)
+        for i in range(1, df/2):
+            term *= m / i
+            sum += term
+
+        return min(sum, 1.0)
