@@ -1,5 +1,7 @@
 # -*- coding:utf-8 -*-
 
+from PIL import Image,ImageDraw
+
 my_data=[['slashdot','USA','yes',18,'None'],
         ['google','France','yes',23,'Premium'],
         ['digg','USA','yes',24,'Basic'],
@@ -132,3 +134,46 @@ def printtree(tree,indent=''):
         printtree(tree.tb,indent+'  ')
         print indent+'F->',
         printtree(tree.fb,indent+'  ')
+
+def getwidth(tree):
+    if tree.tb==None and tree.fb==None: return 1
+    return getwidth(tree.tb)+getwidth(tree.fb)
+
+def getdepth(tree):
+    if tree.tb==None and tree.fb==None: return 0
+    return max(getdepth(tree.tb),getdepth(tree.fb))+1
+
+def drawtree(tree,jpeg='tree.jpeg'):
+    w=getwidth(tree)*100
+    h=getdepth(tree)*100+120
+
+    img=Image.new('RGB',(w,h),(255,255,255))
+    draw=ImageDraw.Draw(img)
+
+    drawnode(draw,tree,w/2,20)
+    img.save(jpeg,'JPEG')
+
+def drawnode(draw,tree,x,y):
+    if tree.results==None:
+        # それぞれの枝の幅を得る
+        w1=getwidth(tree.fb)*100
+        w2=getwidth(tree.tb)*100
+
+        # このノードに必要な総スペースを決定する
+        left=x-(w1+w2)/2
+        right=x+(w1+w2)/2
+
+        # 条件文字列を書く
+        draw.text((x-10,y-10),str(tree.col)+':'+str(tree.value),(0,0,0))
+
+        # 枝へのリンクを描く
+        draw.line((x,y,left+w1/2,y+100),fill=(255,0,0))
+        draw.line((x,y,right-w2/2,y+100),fill=(255,0,0))
+
+        # 枝へのノードを描く
+        drawnode(draw,tree.fb,left+w1/2,y+100)
+        drawnode(draw,tree.tb,right-w2/2,y+100)
+
+    else:
+        txt=' \n'.join(['%s:%d'%v for v in tree.results.items()])
+        draw.text((x-20,y),txt,(0,0,0))
