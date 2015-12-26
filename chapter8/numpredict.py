@@ -127,3 +127,10 @@ def crossvalidate(algf,data,trials=100,test=0.05):
         trainset,testset=dividedata(data,test)
         error+=testalgorithm(algf,trainset,testset)
     return error/trials
+
+def rescale(data,scale):
+    scaleddata=[]
+    for row in data:
+        scaled=[scale[i]*row['input'][i] for i in range(len(scale))]
+        scaleddata.append({'input':scaled,'result':row['result']})
+    return scaleddata
