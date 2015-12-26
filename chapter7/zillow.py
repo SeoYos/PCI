@@ -10,14 +10,14 @@ def getaddressdata(address,city):
 
     # URLを構成する
     url='http://www.zillow.com/webservice/GetDeepSearchResults.htm?'
-    url+='zws-id=%saddress=%s&citystatezep=%s' % (zwskey,escad,city)
+    url+='zws-id=%s&address=%s&citystatezip=%s' % (zwskey,escad,city)
 
     # 帰ってきたXMLの解釈
     doc=xml.dom.minidom.parseString(urllib2.urlopen(url).read())
     code=doc.getElementsByTagName('code')[0].firstChild.data
 
     # コード0なら成功。それ以外はエラーがある
-    if code!=0: return None
+    if code!='0': return None
 
     # この資産の情報を抽出
     try:
