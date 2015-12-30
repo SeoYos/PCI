@@ -100,12 +100,13 @@ def scaledata(rows):
 
     # データを縮尺する関数
     def scaleinput(d):
+        valulist=[]
         for i in range(len(low)):
             try:
-                d[i]=float(d[i]-low[i])/(high[i]-low[i])
+                valuelist+=float(d[i]-low[i])/(high[i]-low[i])
             except:
-                d[i]=0.0
-        return d
+                valuelist+=0.0
+        return valuelist
 
     # すべてのデータを縮尺する
     newrows=[matchrow(scaleinput(row.data)+[row.match]) for row in rows]
